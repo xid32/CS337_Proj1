@@ -17,6 +17,9 @@ $ source virtualenv/bin/activate
 3. Note: This command only needs to be run once
 $ pip install -r requirements.txt
 
+4.
+$ python3 downloader.py
+
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 How to run our code
