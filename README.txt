@@ -3,7 +3,7 @@
 First, cd into this directory
 Your pwd should be something like this: 
 
-$ /.../.../CS337HW1/
+$ /.../.../CS337_Proj1/
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 How to set up: (I am using Python 3.7.4)
@@ -19,6 +19,9 @@ $ pip install -r requirements.txt
 
 4.
 $ python3 downloader.py
+
+5.
+create a "files" directory under CS337_Proj1 and put json files into this "files" directory
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
