@@ -11,7 +11,7 @@ import copy
 def get_tweets(year):
     global TWEETS
     try:
-        f = open('gg' + str(year) + '.json')
+        f = open('files.gg' + str(year) + '.json')
         data = json.load(f)
         TWEETS = [tweet['text'] for tweet in data]
         TWEETS.sort()

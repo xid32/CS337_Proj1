@@ -51,7 +51,7 @@ def get_winner(year):
     names as keys, and each entry containing a single string.
     Do NOT change the name of this function or what it returns.'''
 
-    f = open('../gg'+year+'.json')
+    f = open('files/gg'+year+'.json')
 
     if year == '2013' or year == '2015':
         OFFICIAL_AWARDS = OFFICIAL_AWARDS_1315

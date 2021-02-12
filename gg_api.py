@@ -63,21 +63,24 @@ def pre_ceremony():
     years = ['2013','2015']
     for year in years:
         ####Host#########
-        filename = '../gg'+year+'.json'
+        print("Getting Host")
+        filename = 'files/gg'+year+'.json'
         tweets = json.load(open(filename))
         hosts = host.get_hosts(tweets)
         ##################
         ####Award#########
+        print("Getting Awards")
         awards = []
         if year == '2013' or year == '2015':
             award_names = OFFICIAL_AWARDS_1315
         else:
             award_names = OFFICIAL_AWARDS_1819
-        filename = '../gg'+year+'.json'
+        filename = 'files/gg'+year+'.json'
         tweets = json.load(open(filename))
         awards = allAwards.get_allAwards(tweets,year)
         ##################
         ####Presenter#########
+        print("Getting Presenters")
         if year == '2013' or year == '2015':
             OFFICIAL_AWARDS = OFFICIAL_AWARDS_1315
         else:
@@ -90,6 +93,7 @@ def pre_ceremony():
             result[award] = fres[award]["Presenters"]
         ##################
         ####Winner#########
+        print("Getting Winners")
         winners = gw.get_winner(year)
         ##################
         output = []

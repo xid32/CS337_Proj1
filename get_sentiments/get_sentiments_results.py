@@ -34,7 +34,6 @@ def get_sentiments(hosts, year):
         polarity_count = 0
         word_dict = {}
         for i in range(0, len(data)):
-            if i % 10000 == 0: print(i)
             text = data[i]["text"].lower()
             if host in text:
                 blob = TextBlob(text)
@@ -51,12 +50,6 @@ def get_sentiments(hosts, year):
         sentiments_dict[host]["ave_score"] = polarity_sum / (polarity_count + 1)
         sentiments_dict[host]["words"] = final_word_dict
     return sentiments_dict
-
-
-
-
-print(get_sentiments(hosts, 2015))                
-
                 
 
    
