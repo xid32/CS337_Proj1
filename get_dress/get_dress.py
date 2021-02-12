@@ -137,10 +137,10 @@ def get_dress(year):
         if x<mint:
             mint = x
             l = y
-    print({'Best Dressed:':h,'Worst Dressed:':l})
+    return [h,l]
 
 
 
 if __name__ == "__main__":
-    get_dress(2013)
-    get_dress(2015)
+    get_dress('2013')
+    get_dress('2015')
