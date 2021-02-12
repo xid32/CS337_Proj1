@@ -5,6 +5,7 @@ import regex as re
 import time
 
 OFFICIAL_AWARDS_1315 = ['cecil b. demille award', 'best motion picture - drama', 'best performance by an actress in a motion picture - drama', 'best performance by an actor in a motion picture - drama', 'best motion picture - comedy or musical', 'best performance by an actress in a motion picture - comedy or musical', 'best performance by an actor in a motion picture - comedy or musical', 'best animated feature film', 'best foreign language film', 'best performance by an actress in a supporting role in a motion picture', 'best performance by an actor in a supporting role in a motion picture', 'best director - motion picture', 'best screenplay - motion picture', 'best original score - motion picture', 'best original song - motion picture', 'best television series - drama', 'best performance by an actress in a television series - drama', 'best performance by an actor in a television series - drama', 'best television series - comedy or musical', 'best performance by an actress in a television series - comedy or musical', 'best performance by an actor in a television series - comedy or musical', 'best mini-series or motion picture made for television', 'best performance by an actress in a mini-series or motion picture made for television', 'best performance by an actor in a mini-series or motion picture made for television', 'best performance by an actress in a supporting role in a series, mini-series or motion picture made for television', 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television']
+OFFICIAL_AWARDS_1819 = ['best motion picture - drama', 'best motion picture - musical or comedy', 'best performance by an actress in a motion picture - drama', 'best performance by an actor in a motion picture - drama', 'best performance by an actress in a motion picture - musical or comedy', 'best performance by an actor in a motion picture - musical or comedy', 'best performance by an actress in a supporting role in any motion picture', 'best performance by an actor in a supporting role in any motion picture', 'best director - motion picture', 'best screenplay - motion picture', 'best motion picture - animated', 'best motion picture - foreign language', 'best original score - motion picture', 'best original song - motion picture', 'best television series - drama', 'best television series - musical or comedy', 'best television limited series or motion picture made for television', 'best performance by an actress in a limited series or a motion picture made for television', 'best performance by an actor in a limited series or a motion picture made for television', 'best performance by an actress in a television series - drama', 'best performance by an actor in a television series - drama', 'best performance by an actress in a television series - musical or comedy', 'best performance by an actor in a television series - musical or comedy', 'best performance by an actress in a supporting role in a series, limited series or motion picture made for television', 'best performance by an actor in a supporting role in a series, limited series or motion picture made for television', 'cecil b. demille award']
 
 def clean(tweet):
     t = re.split('RT\s\@\S+\:\s',tweet,1)
@@ -50,16 +51,14 @@ def get_winner(year):
     names as keys, and each entry containing a single string.
     Do NOT change the name of this function or what it returns.'''
 
-    t = time.time()
-    if year == '2013':
-        f = open('/Users/apple/Downloads/gg2013.json')
+    f = open('../gg'+year+'.json')
+
+    if year == '2013' or year == '2015':
+        OFFICIAL_AWARDS = OFFICIAL_AWARDS_1315
     else:
-        f = open('/Users/apple/Downloads/gg2015.json')
+        OFFICIAL_AWARDS = OFFICIAL_AWARDS_1819
 
     data = json.load(f)
-
-
-    OFFICIAL_AWARDS = OFFICIAL_AWARDS_1315
 
 
     new_data = []
@@ -159,17 +158,12 @@ def get_winner(year):
                     maxt = x
                     n = y
             result[OFFICIAL_AWARDS[i]] = n
-    print(time.time()-t)
 
     return result
 
 def main():
-    result = get_winner(2013)
-    with open('gg%sresults.json' % 2013, 'w', encoding='utf8') as outfile:
-        json.dump(result, outfile)
-    result = get_winner(2015)
-    with open('gg%sresults.json' % 2015, 'w', encoding='utf8') as outfile:
-        json.dump(result, outfile)
+    get_winner(2013)
+    get_winner(2015)
     return
 
 if __name__ == "__main__":
