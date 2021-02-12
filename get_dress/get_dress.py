@@ -93,9 +93,9 @@ def get_dress(year):
     classifier = NaiveBayesClassifier.train(train_data)
 
     if year == 2013:
-        f = open('/Users/apple/Downloads/gg2013.json')
+        f = open('../gg2013.json')
     else:
-        f = open('/Users/apple/Downloads/gg2015.json')
+        f = open('../gg2015.json')
     data = json.load(f)
     new_data = []
     result = {}
