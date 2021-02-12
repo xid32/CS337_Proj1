@@ -6,7 +6,16 @@ from get_presenters_utils import *
 
 def get_presenters_results(awards, year):
     # TODO: choose scripts
-    scripts = AWARD_SCRIPTS
+    scripts = []
+    if year == "2013" or year == "2015":
+        awards = OFFICIAL_AWARDS_1315
+        scripts = AWARD_SCRIPTS_1315
+    elif year == "2018" or year == "2019":
+        awards = OFFICIAL_AWARDS_1819
+        scripts = AWARD_SCRIPTS_1819
+    else:
+        print("Bad Year, expect 2013, 2015, 2018 or 2019")
+        return 
 
     # Open Corresponding Year Json File:
     f = open('files/gg%s.json' % year)
