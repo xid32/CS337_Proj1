@@ -22,6 +22,8 @@ def remove_punc(s):
     return " ".join(cleanString(i) for i in s.split())
 
 
+#From reference https://www.kaggle.com/krishnaheroor/cosine-similarity-computing
+#Calculate cosine similarity
 def find_s(x,y):
     
     X_list = x.split()
