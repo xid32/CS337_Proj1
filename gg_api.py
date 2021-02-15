@@ -97,25 +97,16 @@ def pre_ceremony(years):
         winners = gw.get_winner(year)
         ##################
         output = []
-        h,l = gd.get_dress(year)
         print('Host: ',hosts)
-        for j in OFFICIAL_AWARDS_1315:
+        for j in OFFICIAL_AWARDS:
             print()
             print('Award:',j)
             print('Presenters:',result[j])
             print('Nominees:',nominees[j])
             print('Winner:',winners[j])
-        print()
-        print('Best Dressed: ',h)
-        print('Worst Dressed: ' ,l)
-        print()
-        sent = get_sentiments_results.get_sentiments(hosts,year)
-        for h in hosts:
-            print('Common sentiments to host',h ,':' ,sent[h]['words'])
         
         with open('gg%sresults.json' % year, 'w', encoding='utf8') as outfile:
-            json.dump({'host':hosts,'awards':awards,'presenters':result,'nominees':nominees,'winner':winners,'Best Dressed:':h,
-                        'Worst Dressed:':l,'sentiment':sent}, outfile)
+            json.dump({'host':hosts,'awards':awards,'presenters':result,'nominees':nominees,'winner':winners}, outfile)
     print("Pre-ceremony processing complete.")
     return
 
