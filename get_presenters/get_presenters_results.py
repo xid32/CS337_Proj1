@@ -2,7 +2,8 @@ import nltk
 import json
 import re
 from string import punctuation
-
+import imdb
+import Levenshtein as lev
 
 OFFICIAL_AWARDS_1315 = ['cecil b. demille award', 
                    'best motion picture - drama', 
@@ -129,6 +130,21 @@ AWARD_SCRIPTS_1819 = {'cecil b. demille award': ["cecil", "demille"],
                  'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television': ["actor", "supporting", "mini"]}
 
 
+def leven(str1, str2):
+    Distance = lev.distance(str1.lower(), str2.lower())
+    Ratio = lev.ratio(str1.lower(), str2.lower())
+    return Ratio > .60
+    
+
+def validate_name(name):
+    ia = imdb.IMDb()
+    people = ia.search_person(name)
+    for p in people:
+        str1 = p['name'].lower()
+        str2 = name
+        if leven(str1,str2):
+            return True
+    return False
 
 def containStopWord(name):
     for name_token in nltk.word_tokenize(name):
@@ -155,7 +171,12 @@ def get_names(year):
                         nameLower = name.lower()
                         if not containStopWord(nameLower):
                             namesDict[nameLower] = 0
-    return namesDict
+
+
+    finalDict = {}
+    for key in namesDict:
+        if validate_name(key): finalDict[key] = 0
+    return finalDict
 
 
 
@@ -212,7 +233,7 @@ def get_presenters_results(awards, year):
     data = json.load(f) 
 
     # Get names dictionary from Corresponding Year Json File:
-    print("Getting Names: ")
+    print("    Getting Names: ")
     names = get_names(year)
 
     # Output Json File
@@ -221,7 +242,7 @@ def get_presenters_results(awards, year):
     for award in awards:
         result[award] = {"Presenters":[], "Nominees":[], "Winners":[]}
 
-    print("Extracting presenters: ")
+    print("    Extracting presenters: ")
     # Iterate to Extract Information
     for award in awards:
         for i in range(0, len(data)):

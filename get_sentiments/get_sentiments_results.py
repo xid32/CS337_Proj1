@@ -3,7 +3,6 @@ import json
 import re
 from textblob import TextBlob
 # TODO: get_hosts()
-hosts = ["amy poehler", "tina fey"]
 
 def get_sentiment_words(sent, dict, exclude_words):
     targets = ["JJ"]
