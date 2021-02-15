@@ -1,3 +1,5 @@
+GitHub link:
+https://github.com/xid32/CS337_Proj1
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 First, cd into this directory
@@ -27,7 +29,9 @@ create a "files" directory under CS337_Proj1 and put json files into this "files
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 How to run our code
 
-$ python3 src/hw1.py
+$ python3 gg_api.py 20XX
+
+NOTE: Please input the years separately, for example, $ python3 gg_api.py 2013, $ python3 gg_api.py 2015. Because there are some global variables in the 'get_nominees' part.
 
 
 
