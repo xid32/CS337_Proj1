@@ -45,8 +45,7 @@ How to run our code:
 
 2.
 	After running gg_api.py: 
-	1. The human-readable outputs will be printed in terminal
-	2. The Json file with format required on Canvas will be stored as gg[year]formated_results.json in the current directory.
+	The Json file with format required on Canvas will be stored as gg[year]formated_results.json in the current directory.
 
 
 3. 
@@ -61,6 +60,11 @@ How to run our code:
 5.
 	Finally, if you want to see the human-readable output, do:
 	$ python3 human_readable_output.py year
+
+6. In summary:
+	1. The json files with required format are in gg[year]formated_results.json
+	2. The required human-readable output can be view by doing: 
+		python3 human_readable_output.py year
 
 
 
