@@ -26,7 +26,7 @@ $ python3 downloader.py
 put autograder.py, gg[year]answers.json into the current directory
 
 6.
-create a "files" directory under CS337_Proj1 and put json files into this "files" directory
+create a "files" directory under CS337_Proj1 and put json files (corpus) into this "files" directory
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
