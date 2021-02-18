@@ -35,6 +35,16 @@ def main():
     for h in hosts:
         print('	Common sentiments to host',h ,':' ,sent[h]['words'])
 
+    additional_goal = {}
+    additional_goal["best_dress"] = h
+    additional_goal["worst_dress"] = l
+    additional_goal["common_sentiments"] = {}
+    for host in hosts:
+        additional_goal["common_sentiments"][host] = sent[h]['words']
+
+    with open('gg%sadditional_goals.json' % year, 'w', encoding='utf8') as outfile:
+        json.dump(additional_goal, outfile, indent=4)
+
 
 
 if __name__ == '__main__':

@@ -105,8 +105,24 @@ def pre_ceremony(years):
             print('Nominees:',nominees[j])
             print('Winner:',winners[j])
         
+        # The json format used internally by gg_api.
         with open('gg%sresults.json' % year, 'w', encoding='utf8') as outfile:
             json.dump({'host':hosts,'awards':awards,'presenters':result,'nominees':nominees,'winner':winners}, outfile)
+
+        # The json format as required on Canvas
+        correct_format_json = {}
+        correct_format_json["Hosts"] = hosts
+        correct_format_json["Mined_Awards"] = awards
+        for award in OFFICIAL_AWARDS:
+            correct_format_json[award] = {}
+            correct_format_json[award]["Presenters"] = result[award]
+            correct_format_json[award]["Nominees"] = nominees[award]
+            correct_format_json[award]["Winner"] = winners[award]
+
+        with open('gg%sformated_results.json' % year, 'w', encoding='utf8') as outfile:
+            json.dump(correct_format_json, outfile, indent=4)
+
+
     print("Pre-ceremony processing complete.")
     return
 

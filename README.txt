@@ -30,19 +30,37 @@ create a "files" directory under CS337_Proj1 and put json files (corpus) into th
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-How to run our code
+How to run our code:
 
-$ python3 gg_api.py 20XX
+1.
+	No need to run preceremony, since gg_api calls preceromony.
+	Just run gg_api.py like the following and the gg[year]results.json file will be generated in the current directory.
 
-NOTE: Please input the years separately, because there are some global variables in the 'get_nominees' part. For example, 
-$ python3 gg_api.py 2013 
-$ python3 gg_api.py 2015
+	$ python3 gg_api.py 20XX
 
-Then when you run autograder, gg_api will read the json files generated above
-$ python3 autograder.py
+	NOTE: Please input the years separately, because there are some global variables in the 'get_nominees' part. For example, 
+	$ python3 gg_api.py 2013 
+	$ python3 gg_api.py 2015
 
-You can see the results of our addictional goals by running:
-$ python3 additional_goals.py
+
+2.
+	After running gg_api.py: 
+	1. The human-readable outputs will be printed in terminal
+	2. The Json file with format required on Canvas will be stored as gg[year]formated_results.json in the current directory.
+
+
+3. 
+	Then you can run the autograder.py, the methods in gg_api will read the json files: gg[year]results.json generated above
+	$ python3 autograder.py
+
+4. 
+	You can see the results of our addictional goals by running the following. 
+	It requires gg[year]results.json, because it needs the hosts name.
+	$ python3 additional_goals.py year
+
+5.
+	Finally, if you want to see the human-readable output, do:
+	$ python3 human_readable_output.py year
 
 
 
