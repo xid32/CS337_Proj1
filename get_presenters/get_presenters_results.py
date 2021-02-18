@@ -117,8 +117,15 @@ AWARD_SCRIPTS_1819 = {'cecil b. demille award': ["cecil", "demille"],
                  'best screenplay - motion picture': ["screenplay", "motion"],
                  'best original score - motion picture': ["score", "motion"],
                  'best original song - motion picture': ["score", "motion"],
+                 'best performance by an actress in a supporting role in any motion picture': ["actress", "supporting", "motion"],
+                 'best performance by an actor in a supporting role in any motion picture': ["actor", "supporting", "motion"],
                  'best television series - drama': ["tv", "drama"],
+                 'best motion picture - animated': ["motion", "animated"],
+                 'best motion picture - foreign language' : ["motion", "foreign"],
+                 'best television limited series or motion picture made for television' : ["motion", "tv"],
                  'best performance by an actress in a television series - drama': ["actress", "tv", "drama"],
+                 'best performance by an actress in a limited series or a motion picture made for television': ["actress", "limited"],
+                 'best performance by an actor in a limited series or a motion picture made for television': ["actor", "limited"],
                  'best performance by an actor in a television series - drama':["actor", "tv", "drama"], 
                  'best television series - musical or comedy': ["tv", "comedy", "musical"],
                  'best performance by an actress in a television series - musical or comedy': ["actress", "tv", "comedy", "musical"],
@@ -127,7 +134,9 @@ AWARD_SCRIPTS_1819 = {'cecil b. demille award': ["cecil", "demille"],
                  'best performance by an actress in a mini-series or motion picture made for television': ["actress", "mini"],
                  'best performance by an actor in a mini-series or motion picture made for television': ["actor", "mini"],
                  'best performance by an actress in a supporting role in a series, mini-series or motion picture made for television': ["actress", "supporting", "mini"],
-                 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television': ["actor", "supporting", "mini"]}
+                 'best performance by an actor in a supporting role in a series, mini-series or motion picture made for television': ["actor", "supporting", "mini"],
+                 'best performance by an actress in a supporting role in a series, limited series or motion picture made for television': ["actress", "supporting", "series", "tv"],
+                 'best performance by an actor in a supporting role in a series, limited series or motion picture made for television': ["actor", "supporting", "series", "tv"]}
 
 
 def leven(str1, str2):
