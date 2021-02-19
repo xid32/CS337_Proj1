@@ -8,11 +8,8 @@ OFFICIAL_AWARDS_1315 = ['cecil b. demille award', 'best motion picture - drama',
 OFFICIAL_AWARDS_1819 = ['best motion picture - drama', 'best motion picture - musical or comedy', 'best performance by an actress in a motion picture - drama', 'best performance by an actor in a motion picture - drama', 'best performance by an actress in a motion picture - musical or comedy', 'best performance by an actor in a motion picture - musical or comedy', 'best performance by an actress in a supporting role in any motion picture', 'best performance by an actor in a supporting role in any motion picture', 'best director - motion picture', 'best screenplay - motion picture', 'best motion picture - animated', 'best motion picture - foreign language', 'best original score - motion picture', 'best original song - motion picture', 'best television series - drama', 'best television series - musical or comedy', 'best television limited series or motion picture made for television', 'best performance by an actress in a limited series or a motion picture made for television', 'best performance by an actor in a limited series or a motion picture made for television', 'best performance by an actress in a television series - drama', 'best performance by an actor in a television series - drama', 'best performance by an actress in a television series - musical or comedy', 'best performance by an actor in a television series - musical or comedy', 'best performance by an actress in a supporting role in a series, limited series or motion picture made for television', 'best performance by an actor in a supporting role in a series, limited series or motion picture made for television', 'cecil b. demille award']
 
 def clean(tweet):
-    t = re.split('RT\s\@\S+\:\s',tweet,1)
-    if len(t)>1:
-        return clean(t[len(t)-1])
-    else:
-        return t[0]
+    t = tweet.split(':')
+    return t[len(t)-1]
 
 def cleanString(s):
     
@@ -77,17 +74,31 @@ def get_winner(year):
     for i in new_data:
         if re.match('.+.+wins.+.+for.+.+', i):
             
-            name = i.split('wins')[0].lstrip().rstrip()
+            n = i.split('wins')[0]
+            n = n.split()
+            name = ''
+            for j in n:
+                name+=j
+                name+=' '
+
             name = re.split('[:/#@]+',name)
             name = name[len(name)-1].split('http')
             name = name[len(name)-1]
-            award = i.split('for')[1].lower().lstrip().rstrip()
 
             name = name.split()
             name = [w for w in name if w!='Goldenglobes' and w!='GoldenGlobes' and w!='goldenglobes']
             name = ' '.join(name)
+
+            a = i.split('wins for')
+            a = a[len(a)-1].lower()
+            a = a.split()
+            award = ''
+            for j in a:
+                award+=j
+                award+=' '
+
             
-            if re.match('^best', award):
+            if re.match('best', award):
                 maxs = 0
                 pos = -1
                 award = re.split('[:/#@.]+',award)
@@ -107,10 +118,22 @@ def get_winner(year):
                     winners[pos][name] = 1
 
         elif re.match('.+.+\sgoes\sto.+.+',i):
-            words = re.split('\sgoes\sto',i)
-            if re.match('^best',words[0].lower().lstrip()):
-                award = words[0].lower().lstrip().rstrip()
-                name = words[1].lstrip().rstrip()
+
+            t = i.split('goes to')
+            a = t[0].lower().split()
+            award = ''
+            for j in a:
+                award+=j
+                award+=' '
+
+            n = t[1].split()
+            name = ''
+            for j in n:
+                name+=j
+                name+=' '
+            
+            if re.match('best',award):
+
                 w = re.split('[:/.#@]+',name)
                 w = w[0].split('http')
                 w = w[0].split('GoldenGlobes')
@@ -170,3 +193,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
