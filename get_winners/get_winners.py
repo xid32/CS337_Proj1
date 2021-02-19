@@ -72,7 +72,7 @@ def get_winner(year):
         winners.append({})
 
     for i in new_data:
-        if re.match('.+.+wins.+.+for.+.+', i):
+        if re.match('.+.+wins\sfor.+.+', i):
             
             n = i.split('wins')[0]
             n = n.split()
@@ -117,7 +117,7 @@ def get_winner(year):
                 else:
                     winners[pos][name] = 1
 
-        elif re.match('.+.+\sgoes\sto.+.+',i):
+        elif re.match('.+.+goes\sto.+.+',i):
 
             t = i.split('goes to')
             a = t[0].lower().split()
